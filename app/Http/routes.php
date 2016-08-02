@@ -10,17 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+// THE ROUTE SHOULD ALWAYS PASS A REQUEST TO A CONTROLLER
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});
-
+Route::get('/', 'PagesController@getindex');
+Route::get('/about', 'PagesController@getAbout');
+Route::get('/contact','PagesController@getContact');
 
