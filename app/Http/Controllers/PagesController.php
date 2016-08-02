@@ -12,12 +12,18 @@ class PagesController extends Controller
         # pass data to correct view
         return view('pages.welcome');
     }
+
     public function getContact() {
         return view('pages.contact');
     }
 
     public function getAbout() {
-        return view('pages.about');
+        $first = 'Radley';
+        $last = 'Anaya';
+        $full = $first . " " . $last;
+        $email = "radmation@gmail.com";
+        $data = array('email' => $email, 'fullname' => $full);
+        return view('pages.about')->withData($data);
     }
 
     public function postContact() {
