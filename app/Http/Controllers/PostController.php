@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Post;
 
 class PostController extends Controller
 {
@@ -37,7 +38,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate the data -  MATCH THE DATABSE TYPES and SIZES varchar 255
+        $this->validate($request, array(
+            'title' => 'required|max:255',
+            'body' => 'required'
+        ));
+        // store the data in the database
+        $post = new Post; // eloquent no sql syntax
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save(); // save into DB
+        // redirect to another page
+        return redirect()->route('posts.show', $post->id); // post is saved already and has an id
     }
 
     /**
