@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '| View Post')
+@section('title', '| Edit Post')
 
 
 @section('content')
@@ -17,7 +17,6 @@
                 <dl class="dl-horizontal">
                     <dt>Created At:</dt>
                     <dd>{{ date( 'M j, Y g:ia', strtotime($post->created_at)) }}</dd>
-
                 </dl>
                 <dl class="dl-horizontal">
                     <dt>Last Updated:</dt>

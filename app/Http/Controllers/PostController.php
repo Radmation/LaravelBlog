@@ -17,7 +17,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        // All posts
+        // get all post data from database
+        $posts = Post::all();
+        // return view pass data to view
+        return view('posts.index')->withPosts($posts);
     }
 
     /**
@@ -63,8 +66,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
-        return view('posts.show');
+        // get the post data where the id url param id
+        $post = Post::find($id);
+        return view('posts.show')->withPost($post);
     }
 
     /**
@@ -75,7 +79,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        // get the post data
+        $post = Post::find($id);
+        // return view and pass in post data
+        return view('posts.edit')->withPost($post);
     }
 
     /**
